@@ -1,0 +1,222 @@
+# General Helldivers 2
+[[stratagems]]
+name = "Reinforcement"
+sequence = ["Up", "Down", "Right", "Left", "Up"]
+
+[[stratagems]]
+name = "Resupply"
+sequence = ["Down", "Down", "Up", "Right"]
+
+[[stratagems]]
+name = "SOS Beacon"
+sequence = ["Up", "Down", "Right", "Up"]
+
+[[stratagems]]
+name = "SEAF Artillery"
+sequence = ["Right", "Up", "Up", "Down"]
+
+[[stratagems]]
+name = "Hellbomb"
+sequence = ["Down", "Up", "Left", "Down", "Up", "Right", "Down", "Up"]
+
+[[stratagems]]
+name = "Super Earth Flag"
+sequence = ["Down", "Up", "Down", "Up"]
+
+# Patriotic Administration Center Stratagem Codes
+[[stratagems]]
+name = "Machine Gun"
+sequence = ["Down", "Left", "Down", "Up", "Right"]
+
+[[stratagems]]
+name = "Anti-Material Rifle"
+sequence = ["Down", "Left", "Right", "Up", "Down"]
+
+[[stratagems]]
+name = "Stalwart"
+sequence = ["Down", "Left", "Down", "Up", "Up", "Left"]
+
+[[stratagems]]
+name = "Expendable Anti-Tank"
+sequence = ["Down", "Down", "Left", "Up", "Right"]
+
+[[stratagems]]
+name = "Recoiless Rifle"
+sequence = ["Down", "Left", "Right", "Right", "Left"]
+
+[[stratagems]]
+name = "Flamethrower"
+sequence = ["Down", "Left", "Up", "Down", "Up"]
+
+[[stratagems]]
+name = "Auto-Canon"
+sequence = ["Down", "Left", "Down", "Up", "Up", "Right"]
+
+[[stratagems]]
+name = "Railgun"
+sequence = ["Down", "Right", "Down", "Up", "Left", "Right"]
+
+[[stratagems]]
+name = "Spear"
+sequence = ["Down", "Down", "Up", "Down", "Down"]
+
+# Orbital Cannons Stratagem Codes
+[[stratagems]]
+name = "Orbital Gatling Barrage"
+sequence = ["Right", "Down", "Left", "Up", "Up"]
+
+[[stratagems]]
+name = "Orbital Airburst Strike"
+sequence = ["Right", "Right", "Right"]
+
+[[stratagems]]
+name = "Orbital 120MM HE Barrage"
+sequence = ["Right", "Right", "Down", "Left", "Right", "Down"]
+
+[[stratagems]]
+name = "Orbital 380MM HE Barrage"
+sequence = ["Right", "Down", "Up", "Up", "Left", "Down", "Down"]
+
+[[stratagems]]
+name = "Orbital Walking Barrage"
+sequence = ["Right", "Down", "Right", "Down", "Right", "Down"]
+
+[[stratagems]]
+name = "Orbital Laser"
+sequence = ["Right", "Down", "Up", "Right", "Down"]
+
+[[stratagems]]
+name = "Orbital Railgun Strike"
+sequence = ["Right", "Up", "Down", "Down", "Right"]
+
+# Hangar Stratagem Codes
+[[stratagems]]
+name = "Eagle Straffing Run"
+sequence = ["Up", "Right", "Right"]
+
+[[stratagems]]
+name = "Eagle Airstrike"
+sequence = ["Up", "Right", "Down", "Right"]
+
+[[stratagems]]
+name = "Eagle Cluster Bomb"
+sequence = ["Up", "Right", "Down", "Down", "Right"]
+
+[[stratagems]]
+name = "Eagle Napalm Strike"
+sequence = ["Up", "Right", "Down", "Up"]
+
+[[stratagems]]
+name = "Jump Pack"
+sequence = ["Down", "Up", "Up", "Down", "Up"]
+
+[[stratagems]]
+name = "Eagle Smoke Strike"
+sequence = ["Up", "Right", "Down", "Up"]
+
+[[stratagems]]
+name = "Eagle 110MM Rocket Pods"
+sequence = ["Up", "Right", "Up", "Left"]
+
+[[stratagems]]
+name = "Eagle 500KG Bomb"
+sequence = ["Up", "Right", "Down", "Down", "Down"]
+
+[[stratagems]]
+name = "Eagle Rearm"
+sequence = ["Up", "Up", "Left", "Up", "Right"]
+
+# Bridge Stratagem Codes
+[[stratagems]]
+name = "Orbital Precision Strike"
+sequence = ["Right", "Right", "Up"]
+
+[[stratagems]]
+name = "Orbital Gas Strike"
+sequence = ["Right", "Right", "Down", "Right"]
+
+[[stratagems]]
+name = "Orbital EMS Strike"
+sequence = ["Right", "Right", "Left", "Down"]
+
+[[stratagems]]
+name = "Orbital Smoke Strike"
+sequence = ["Right", "Right", "Down", "Up"]
+
+[[stratagems]]
+name = "HMG Placement"
+sequence = ["Down", "Up", "Left", "Right", "Right", "Left"]
+
+[[stratagems]]
+name = "Shield Generator"
+sequence = ["Down", "Down", "Left", "Right", "Left", "Right"]
+
+[[stratagems]]
+name = "Tesla Tower"
+sequence = ["Down", "Up", "Right", "Up", "Left", "Right"]
+
+# Engineering Bay Stratagem Codes
+[[stratagems]]
+name = "Anti-Personnel Minefield"
+sequence = ["Down", "Left", "Up", "Right"]
+
+[[stratagems]]
+name = "Supply Pack"
+sequence = ["Down", "Left", "Down", "Up", "Up", "Down"]
+
+[[stratagems]]
+name = "Grenade Launcher"
+sequence = ["Down", "Left", "Up", "Left", "Down"]
+
+[[stratagems]]
+name = "Laser Canon"
+sequence = ["Down", "Left", "Down", "Up", "Left"]
+
+[[stratagems]]
+name = "Incendiary Mines"
+sequence = ["Down", "Left", "Left", "Down"]
+
+[[stratagems]]
+name = "Guard Dog Rover"
+sequence = ["Up", "Down", "Left", "Up", "Right", "Right"]
+
+[[stratagems]]
+name = "Ballistic Shield"
+sequence = ["Down", "Left", "Down", "Down", "Up", "Left"]
+
+[[stratagems]]
+name = "Arc Thrower"
+sequence = ["Down", "Right", "Down", "Up", "Left", "Left"]
+
+[[stratagems]]
+name = "Shield Generator Pack"
+sequence = ["Down", "Up", "Left", "Right", "Left", "Right"]
+
+# Robotic Workshop Stratagem Codes
+[[stratagems]]
+name = "Machine Gun Sentry"
+sequence = ["Down", "Up", "Right", "Right", "Up"]
+
+[[stratagems]]
+name = "Gatling Sentry"
+sequence = ["Down", "Up", "Right", "Left"]
+
+[[stratagems]]
+name = "Mortar Sentry"
+sequence = ["Down", "Up", "Right", "Right", "Down"]
+
+[[stratagems]]
+name = "Guard Dog"
+sequence = ["Down", "Up", "Left", "Up", "Right", "Down"]
+
+[[stratagems]]
+name = "Autocanon Sentry"
+sequence = ["Down", "Up", "Right", "Up", "Left", "Up"]
+
+[[stratagems]]
+name = "Rocket Sentry"
+sequence = ["Down", "Up", "Right", "Right", "Left"]
+
+[[stratagems]]
+name = "EMS Mortar Sentry"
+sequence = ["Down", "Up", "Right", "Down", "Right"]
