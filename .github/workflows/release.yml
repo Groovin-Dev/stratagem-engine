@@ -27,13 +27,13 @@ jobs:
       run: cargo build --release
 
   release:
-    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     needs: build
     runs-on: windows-latest
     steps:
     - uses: actions/checkout@v2
 
-    # Extract version from Cargo.toml, only for pushes to master
+    # Extract version from Cargo.toml, only for pushes to main
     - name: Extract version
       run: |
         echo "CARGO_VERSION=$(cargo read-manifest | ConvertFrom-Json | Select -ExpandProperty version)" >> $GITHUB_ENV
