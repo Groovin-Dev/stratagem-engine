@@ -1,17 +1,10 @@
 name: Rust Build, Test, and Conditional Release
 
-on:
-  pull_request:
-    branches:
-      - master
-  push:
-    branches:
-      - master
-  workflow_dispatch:
+on: [push, pull_request]
 
 jobs:
-  build-and-conditional-release:
-    runs-on: ubuntu-latest
+  build-test-and-conditional-release:
+    runs-on: windows-latest
     steps:
     - uses: actions/checkout@v2
 
@@ -25,9 +18,9 @@ jobs:
 
     # Extract version from Cargo.toml, but only for pushes to master
     - name: Extract version
-      if: github.event_name == 'push'
+      if: github.ref == 'refs/heads/master' && github.event_name == 'push'
       run: |
-        echo "CARGO_VERSION=$(grep '^version' Cargo.toml | head -1 | sed -E 's/[^0-9.]+//g')" >> $GITHUB_ENV
+        echo "CARGO_VERSION=$(cargo read-manifest | ConvertFrom-Json | Select -ExpandProperty version)" >> $GITHUB_ENV
 
     # Build the Rust project
     - name: Build
@@ -35,7 +28,7 @@ jobs:
 
     # Conditionally publish the binary as a GitHub Release only on push to master
     - name: Create Release
-      if: github.event_name == 'push'
+      if: github.ref == 'refs/heads/master' && github.event_name == 'push'
       uses: actions/create-release@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -47,23 +40,23 @@ jobs:
 
     # Conditionally upload the binary and config file to the release only on push to master
     - name: Upload Binary Asset
-      if: github.event_name == 'push'
+      if: github.ref == 'refs/heads/master' && github.event_name == 'push'
       uses: actions/upload-release-asset@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./target/release/stratagem_engine.exe
+        asset_path: .\target\release\stratagem_engine.exe
         asset_name: stratagem_engine.exe
         asset_content_type: application/octet-stream
 
     - name: Upload Config File Asset
-      if: github.event_name == 'push'
+      if: github.ref == 'refs/heads/master' && github.event_name == 'push'
       uses: actions/upload-release-asset@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./stratagems.toml
+        asset_path: .\stratagems.toml
         asset_name: stratagems.toml
         asset_content_type: text/plain
