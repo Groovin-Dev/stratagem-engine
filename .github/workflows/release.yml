@@ -1,9 +1,15 @@
-name: Rust Build, Test, and Conditional Release
+name: Rust Build and Conditional Release
 
-on: [push, pull_request]
+on:
+  push:
+    branches-ignore:
+      - master
+  pull_request:
+    branches:
+      - master
 
 jobs:
-  build-test-and-conditional-release:
+  build:
     runs-on: windows-latest
     steps:
     - uses: actions/checkout@v2
@@ -16,19 +22,32 @@ jobs:
         profile: minimal
         override: true
 
-    # Extract version from Cargo.toml, but only for pushes to master
-    - name: Extract version
-      if: github.ref == 'refs/heads/master' && github.event_name == 'push'
-      run: |
-        echo "CARGO_VERSION=$(cargo read-manifest | ConvertFrom-Json | Select -ExpandProperty version)" >> $GITHUB_ENV
-
     # Build the Rust project
     - name: Build
       run: cargo build --release
 
-    # Conditionally publish the binary as a GitHub Release only on push to master
+  release:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+    needs: build
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    # Extract version from Cargo.toml, only for pushes to master
+    - name: Extract version
+      run: |
+        echo "CARGO_VERSION=$(cargo read-manifest | ConvertFrom-Json | Select -ExpandProperty version)" >> $GITHUB_ENV
+
+    # Set up Rust. This is necessary again because each job runs in a fresh environment
+    - name: Set up Rust
+      uses: actions-rs/toolchain@v1
+      with:
+        toolchain: stable
+        profile: minimal
+        override: true
+
+    # Create a release using the version from Cargo.toml
     - name: Create Release
-      if: github.ref == 'refs/heads/master' && github.event_name == 'push'
       uses: actions/create-release@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -38,9 +57,8 @@ jobs:
         draft: false
         prerelease: false
 
-    # Conditionally upload the binary and config file to the release only on push to master
+    # Upload the binary to the release
     - name: Upload Binary Asset
-      if: github.ref == 'refs/heads/master' && github.event_name == 'push'
       uses: actions/upload-release-asset@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -50,8 +68,8 @@ jobs:
         asset_name: stratagem_engine.exe
         asset_content_type: application/octet-stream
 
+    # Upload the config file to the release
     - name: Upload Config File Asset
-      if: github.ref == 'refs/heads/master' && github.event_name == 'push'
       uses: actions/upload-release-asset@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
