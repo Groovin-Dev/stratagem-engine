@@ -1,0 +1,64 @@
+name: Rust Build and Release
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      # Set up Rust environment
+      - name: Set up Rust
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          profile: minimal
+          override: true
+
+      # Extract version from Cargo.toml
+      - name: Extract version
+        id: cargo_version
+        run: |
+          echo "CARGO_VERSION=$(grep '^version' Cargo.toml | head -1 | sed -E 's/[^0-9.]+//g')" >> $GITHUB_ENV
+
+      # Build the Rust project
+      - name: Build
+        run: cargo build --release
+
+      # Publish the binary as a GitHub Release
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: v${{ env.CARGO_VERSION }}
+          release_name: Release v${{ env.CARGO_VERSION }}
+          draft: false
+          prerelease: false
+
+      # Upload the binary to the release
+      - name: Upload Binary Asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./target/release/stratagem_engine.exe
+          asset_name: stratagem_engine.exe
+          asset_content_type: application/octet-stream
+
+      # Upload the stratagems.toml file to the release
+      - name: Upload Config File Asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./stratagems.toml
+          asset_name: stratagems.toml
+          asset_content_type: text/plain
